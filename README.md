@@ -1,19 +1,19 @@
-Чат для отправки и получения текстовых сообщений через GREEN-API.
+# Чат для отправки и получения текстовых сообщений через [GREEN-API](https://green-api.com/).
+
+**Демо:** https://messenger-sigma-bay.vercel.app
 
 ## Стек
+
 - React (Vite)
 - JavaScript
 - CSS
 
-## Требования
-- Node.js 18+ (24.x)
-- Аккаунт GREEN-API с авторизованным инстансом: https://console.green-api.com/
+## Локальный запуск
 
-## Установка и запуск
 ```bash
 # 1. Клонировать репозиторий
-git clone https://github.com/ВАШ_ЛОГИН/react-green-chat.git
-cd react-green-chat
+git clone https://github.com/Lyubov15/messenger.git
+cd messenger
 
 # 2. Установить зависимости
 npm install
