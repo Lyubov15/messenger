@@ -134,19 +134,22 @@ if (!messageText.trim()) return;
             if (notification && notification.receiptId) {
               console.log('Получено уведомление:', notification);
               
-              // Проверяем, является ли это входящим сообщением
-              if (notification.body && notification.body.typeWebhook === 'incomingMessageReceived') {
+            // Обрабатываем входящие и исходящие сообщения
+              if (notification.body && (
+                notification.body.typeWebhook === 'incomingMessageReceived' ||
+                notification.body.typeWebhook === 'outgoingMessageReceived'
+              )) {
                 const incomingMessage = notification.body.messageData.textMessageData?.textMessage;
                 const senderChatId = notification.body.senderData?.chatId;
-                
+                const isOutgoing = notification.body.typeWebhook === 'outgoingMessageReceived';
+
                 if (incomingMessage && senderChatId === chatId) {
-                  // Добавляем входящее сообщение в список
                   setMessages((prev) => [
                     ...prev,
                     {
                       id: notification.body.idMessage || Date.now().toString(),
                       text: incomingMessage,
-                      sender: 'them',
+                      sender: isOutgoing ? 'me' : 'them',
                     },
                   ]);
                 }
